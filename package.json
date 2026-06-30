@@ -1,0 +1,9 @@
+{
+  "name": "dw",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A modern desktop-first web app for downloading Xhamster videos",
+  "scripts": {
+    "start": "node backend/server.js"
+  }
+}

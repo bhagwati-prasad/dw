@@ -1,0 +1,28 @@
+[
+  {
+    "id": "history-1",
+    "status": "completed"
+  },
+  {
+    "id": "history-1782691164799",
+    "status": "completed",
+    "completedAt": "2026-06-28T23:59:24.799Z",
+    "outputPath": "/downloads/undefined.mp4"
+  },
+  {
+    "id": "history-1782691310864",
+    "source": "https://example.com/demo",
+    "title": "demo",
+    "selectedResolution": "1080p",
+    "selectedFormat": "mp4",
+    "status": "completed",
+    "startedAt": "2026-06-28T23:59:24.791Z",
+    "completedAt": "2026-06-29T00:01:50.864Z",
+    "outputPath": "/downloads/demo.mp4"
+  },
+  {
+    "id": "history-test",
+    "status": "completed",
+    "title": "demo"
+  }
+]

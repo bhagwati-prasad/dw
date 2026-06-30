@@ -1,0 +1,42 @@
+[
+  {
+    "id": "queue-1",
+    "status": "completed",
+    "progress": 100,
+    "updatedAt": "2026-06-28T23:59:24.799Z"
+  },
+  {
+    "id": "queue-1782691164791",
+    "title": "demo",
+    "source": "https://example.com/demo",
+    "selectedResolution": "1080p",
+    "selectedFormat": "mp4",
+    "status": "completed",
+    "createdAt": "2026-06-28T23:59:24.791Z",
+    "updatedAt": "2026-06-29T00:01:50.863Z",
+    "attempts": 0,
+    "progress": 100
+  },
+  {
+    "id": "queue-1782691164798",
+    "title": "process-me",
+    "source": "https://example.com/process",
+    "selectedResolution": "1080p",
+    "selectedFormat": "mp4",
+    "status": "queued",
+    "createdAt": "2026-06-28T23:59:24.798Z",
+    "updatedAt": "2026-06-28T23:59:24.798Z",
+    "attempts": 0
+  },
+  {
+    "id": "queue-1782691310846",
+    "title": "Queue demo",
+    "source": "https://example.com/queue",
+    "selectedResolution": "1080p",
+    "selectedFormat": "mp4",
+    "status": "queued",
+    "createdAt": "2026-06-29T00:01:50.846Z",
+    "updatedAt": "2026-06-29T00:01:50.846Z",
+    "attempts": 0
+  }
+]

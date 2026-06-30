@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Normalized Media Metadata Schema",
+  "description": "Standard schema for all media metadata from any adapter source",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "id",
+    "sourceUrl",
+    "normalizedKey",
+    "adapterName",
+    "sourceType",
+    "title",
+    "duration"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier per adapter (e.g., YouTube video ID)"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Original input URL"
+    },
+    "normalizedKey": {
+      "type": "string",
+      "description": "Normalized key for cache lookup (e.g., youtube:dQw4w9WgXcQ)"
+    },
+    "adapterName": {
+      "type": "string",
+      "enum": ["youtube", "vimeo", "dailymotion", "html", "twitch"],
+      "description": "Name of the adapter that fetched this metadata"
+    },
+    "sourceType": {
+      "type": "string",
+      "enum": ["video", "playlist", "channel", "stream", "short", "group", "collection", "unknown"],
+      "description": "Type of media source"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title or name of the media"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Optional description or summary"
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Duration in seconds (0 for streams or unknown)"
+    },
+    "thumbnailUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to thumbnail image"
+    },
+    "previewUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Optional URL to preview media"
+    },
+    "authorName": {
+      "type": ["string", "null"],
+      "description": "Author, channel, or creator name"
+    },
+    "authorUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to author or channel page"
+    },
+    "uploadDate": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When the media was published/uploaded"
+    },
+    "viewCount": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Number of views (if available)"
+    },
+    "likeCount": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Number of likes (if available)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated tags or keywords"
+    },
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Resolution"
+      },
+      "description": "Available quality/format options"
+    },
+    "formatOptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["mp4", "webm", "flv", "mov", "m4a", "mp3", "opus", "aac", "vorbis"]
+      },
+      "description": "Supported output formats"
+    },
+    "subtitles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Language code (e.g., en, fr, es)"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "description": "Available subtitles/captions"
+    },
+    "adapterMetadata": {
+      "type": "object",
+      "description": "Adapter-specific metadata (e.g., YouTube video ID, channel ID, Vimeo user ID)"
+    },
+    "parsedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this metadata was fetched/parsed"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this cached metadata expires"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score of detection (0-1)"
+    },
+    "error": {
+      "type": ["object", "null"],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "description": "Error details if parsing failed"
+    }
+  },
+  "definitions": {
+    "Resolution": {
+      "type": "object",
+      "required": ["format", "codec"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["mp4", "webm", "flv", "mov", "m4a", "mp3", "opus", "aac", "vorbis", "unknown"],
+          "description": "Container format"
+        },
+        "codec": {
+          "type": "string",
+          "enum": ["h264", "h265", "vp8", "vp9", "av1", "aac", "mp3", "opus", "vorbis", "unknown"],
+          "description": "Video or audio codec"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Video width in pixels (0 for audio-only)"
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Video height in pixels (0 for audio-only)"
+        },
+        "bitrate": {
+          "type": "string",
+          "pattern": "^\\d+[kmg]?$",
+          "description": "Bitrate (e.g., 5000k, 128k, 2m)"
+        },
+        "fps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Frames per second (0 for audio)"
+        },
+        "fileSize": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Estimated file size in bytes (0 if unknown)"
+        },
+        "isRecommended": {
+          "type": "boolean",
+          "description": "Mark as recommended/best quality"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

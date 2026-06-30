@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dw — Video Downloader</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Desktop-first media workflow</p>
+          <h1>dw</h1>
+        </div>
+        <button id="theme-toggle" class="ghost-btn">🌙 Dark</button>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar">
+          <h2>Workspace</h2>
+          <nav>
+            <button class="nav-btn active" data-view="input">Input</button>
+            <button class="nav-btn" data-view="queue">Queue</button>
+            <button class="nav-btn" data-view="history">History</button>
+          </nav>
+          <div class="panel compact">
+            <h3>Quick Status</h3>
+            <p id="health-status">Checking backend…</p>
+          </div>
+        </aside>
+
+        <section class="content">
+          <div id="view-input" class="view active">
+            <div class="panel hero">
+              <h2>Start a new download</h2>
+              <p>Paste a video URL, a creator reference, or a batch of links to begin.</p>
+              <form id="input-form" class="input-form">
+                <label for="source-input">Source</label>
+                <textarea id="source-input" rows="4" placeholder="Paste a single URL, creator name, or one URL per line"></textarea>
+                <div class="actions">
+                  <button type="submit" class="primary-btn">Analyze</button>
+                  <button type="button" class="ghost-btn" id="clear-btn">Clear</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <h3>Supported modes</h3>
+              <ul>
+                <li>Single video URL</li>
+                <li>Creator or channel reference</li>
+                <li>Multi-link batch input</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="view-queue" class="view">
+            <div class="panel">
+              <h2>Queue</h2>
+              <p>Your downloads will appear here once the queue is ready.</p>
+              <button id="process-queue-btn" class="primary-btn" type="button">Process queue</button>
+              <div id="queue-list" class="queue-list"></div>
+            </div>
+          </div>
+
+          <div id="view-history" class="view">
+            <div class="panel">
+              <h2>History</h2>
+              <p>Completed and failed jobs will be listed here.</p>
+              <div class="history-controls">
+                <select id="history-filter" class="control-select compact-select">
+                  <option value="all">All</option>
+                  <option value="completed">Completed</option>
+                  <option value="failed">Failed</option>
+                </select>
+                <button id="refresh-history-btn" class="ghost-btn" type="button">Refresh</button>
+              </div>
+              <div id="history-list" class="history-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
